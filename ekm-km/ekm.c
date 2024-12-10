@@ -1,10 +1,3 @@
-/*
-Sources:
-1. Hello, World: https://www.cyberciti.biz/tips/compiling-linux-kernel-module.html
-2. Netlink example: https://dev.to/zqiu/netlink-communication-between-kernel-and-user-space-2mg1
-3. https://docs.kernel.org/userspace-api/netlink/intro.html
-*/
-
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>

@@ -1,32 +1,37 @@
 # Echo Kernel Module (TBD)
 
+## Limitations & Dependencies
+_TBD_
+
 
 ## Usage:
-### Build kernel module
+```bash
+# Build kernel module
 ./run.sh build  # or `b`
-### Clean build dir
+# Clean build dir
 ./run.sh clean
-### Install kernel module
+# Install kernel module
 ./run.sh install  # or `i`
-### Remove kernel module
+# Remove kernel module
 ./run.sh uninstall  # or `u`
-### Show if kernel module is installed
+# Show if kernel module is installed
 ./run.sh status  # or `s`
-### Show message from `dmesg` grepped by kernel module
+# Show message from `dmesg` grepped by kernel module
 ./run.sh log  # or `l`
-### Send request to kernel module
+# Send request to kernel module
 ./run.sh request  # or `r`
-### Run client from userspace. Send/Receive message
+# Run client from userspace. Send/Receive message
 ./run.sh client  # or `c`
-
+```
 
 ## Roadmap
-[x] "Hello, World!"
-[x] Kernel that answer something on client request
-[ ] Kernel that echo payload to client request
-[ ] Using Generic NetLink
-[ ] [libnl](https://www.infradead.org/~tgr/libnl/)
-[ ] ???
+
+- [x] "Hello, World!" `tag: 0.1.0`
+- [x] Kernel that answer something on client request via NetLink `tag: 0.2.0`
+- [ ] Kernel that echo payload to client request
+- [ ] Using Generic NetLink
+- [ ] [libnl](https://www.infradead.org/~tgr/libnl/)
+- [ ] ???
 
 
 ## Sources

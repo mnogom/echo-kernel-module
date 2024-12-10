@@ -1,15 +1,17 @@
 #!/bin/bash
 
 function build() {
+  cd ./ekm-km/
   make
 }
 
 function clean() {
+  cd ./ekm-km/
   make clean
 }
 
 function install() {
-  insmod ./ekm.ko
+  insmod ./ekm-km/ekm.ko
 }
 
 function uninstall() {
@@ -25,7 +27,7 @@ function log() {
 }
 
 function client() {
-  ./client.py
+  ./ekm-cl/client.py
 }
 
 case $1 in
