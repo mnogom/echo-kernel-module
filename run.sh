@@ -17,18 +17,22 @@ function uninstall() {
 }
 
 function status() {
-  echo $(lsmod | grep "ekm") || echo "ekm is not installed"
+  [[ $(lsmod | grep "ekm") ]] && echo "Kernel EKM is installed" || echo "Kernel EKM is not installed"
 }
 
 function log() {
   dmesg | grep -i "ekm"
 }
 
+function client() {
+  ./client.py
+}
+
 case $1 in
 build | b)
   build
   ;;
-clean | c)
+clean)
   clean
   ;;
 install | i)
@@ -42,6 +46,9 @@ status | s)
   ;;
 log | l)
   log
+  ;;
+client | c)
+  client
   ;;
 *)
   echo "Command '$1' not found"
