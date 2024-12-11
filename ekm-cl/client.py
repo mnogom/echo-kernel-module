@@ -11,18 +11,17 @@ NLMSG_MIN_TYPE = 0x10
 GENL_ID_CTRL = NLMSG_MIN_TYPE
 NLM_F_REQUEST = 0x1
 
+NETLINK_HEADERS_TYPES = "IHHII"
+
 
 def render(msg: bytes) -> tuple:
-    (msg_len, msg_type, msg_flags, msg_seq, msg_pid) = struct.unpack("IHHII", msg[:16])
-    msg_payload = msg[16:]
-    return {
-        "len": msg_len,
-        "type": msg_type,
-        "flags": msg_flags,
-        "seq": msg_seq,
-        "pid": msg_pid,
-        "payload": msg_payload,
-    }
+    final_string = "|> Headers\n"
+    final_string += (
+        "|len: {} | type: {} | flags: {} | seq: {} | pid: {}\n"
+    ).format(*struct.unpack(NETLINK_HEADERS_TYPES, msg[:16]))
+    final_string += "|> Payload\n"
+    final_string += f"|{msg[16:]}"
+    return final_string
 
 
 def create_msg(
@@ -32,14 +31,11 @@ def create_msg(
     flags: int = NLM_F_REQUEST,
     seq: int = 1,
 ) -> bytes:
-    msg_type = struct.pack("H", type_)
-    msg_flags = struct.pack("H", flags)
-    msg_seq = struct.pack("I", seq)
-    msg_pid = struct.pack("I", pid)
-    msg_payload = text.encode()
-    msg_tail = msg_type + msg_flags + msg_seq + msg_pid + msg_payload
-    msg_len = struct.pack("I", len(msg_tail) + 4)
-    return msg_len + msg_tail
+    payload = text.encode()
+    len_ = struct.calcsize(NETLINK_HEADERS_TYPES) + len(payload)
+    return struct.pack(
+        NETLINK_HEADERS_TYPES, len_, type_, flags, seq, pid
+    ) + payload
 
 
 def main():

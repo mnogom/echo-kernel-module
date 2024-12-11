@@ -70,4 +70,3 @@ MODULE_VERSION("0.2.1");
 MODULE_DESCRIPTION("Echo Kernel Module");
 MODULE_AUTHOR("Konstantin Freidlin");
 MODULE_LICENSE("GPL");
-
