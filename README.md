@@ -27,7 +27,7 @@ _TBD_
 ## Roadmap
 
 - [x] "Hello, World!" `tag: 0.1.0`
-- [x] Kernel that answer something on client request via NetLink `tag: 0.2.0`
+- [x] Kernel that answer something on client request via NetLink `tag: 0.2.x`
 - [ ] Kernel that echo payload to client request
 - [ ] Using Generic NetLink
 - [ ] [libnl](https://www.infradead.org/~tgr/libnl/)

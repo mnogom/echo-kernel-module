@@ -21,13 +21,13 @@ static void recv_msg(struct sk_buff *skb)
 
   msg_size = strlen(msg);
   nlhead = (struct nlmsghdr*)skb->data;
-  printk(KERN_INFO "[ELM] --> Receive: %s\n", (char*)nlmsg_data(nlhead));
+  printk(KERN_INFO "[EKM] --> Receive: %s\n", (char*)nlmsg_data(nlhead));
   pid = nlhead->nlmsg_pid;
 
   skb_out = nlmsg_new(msg_size, 0);
   if(!skb_out)
   {
-    printk(KERN_ERR "[ELM] --> Failed to allocate new skb\n");
+    printk(KERN_ERR "[EKM] --> Failed to allocate new skb\n");
     return;
   }
 
@@ -66,7 +66,7 @@ static void __exit hello_end(void)
 module_init(hello_start);
 module_exit(hello_end);
 
-MODULE_VERSION("0.1.0");
+MODULE_VERSION("0.2.1");
 MODULE_DESCRIPTION("Echo Kernel Module");
 MODULE_AUTHOR("Konstantin Freidlin");
 MODULE_LICENSE("GPL");

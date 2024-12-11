@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
 
 function build() {
   cd ./ekm-km/
   make
+  echo "Kernel module was built"
+  modinfo ./ekm.ko
 }
 
 function clean() {
@@ -23,7 +25,7 @@ function status() {
 }
 
 function log() {
-  dmesg | grep -i "ekm"
+  dmesg -H --color=always | grep -i "ekm"
 }
 
 function client() {
